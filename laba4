@@ -1,0 +1,47 @@
+program project1;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  Classes
+  { you can add units after this };
+   type Vector=array[word] of char;//massiv i vecor odno i toge
+   var  A:vector; n:integer;//vvodimoe chiclo
+     t:char;
+   Procedure Create(var arr:vector);//prochedura sozdania massiva
+   var i:integer;
+   begin
+      for i:=0 to n-1 do
+      begin
+        write('Vvedite  simvol: ');
+        readln(arr[i]);
+      end;
+   end;
+ Procedure Sort(arr:Vector);
+ var j,i:integer; key:char;
+ begin
+    for j:=1 to n-1 do  // идем от2 элемента до последнего
+    begin
+    key:=A[j];// говрим что ключ равен текущему элем
+    i:=j-1;// и равен предыдущему
+    while ((i>=0) and (A[i]<key)) do// если и больши равн нулю и елемент меньше ключа      тогда
+    begin
+    A[i+1]:=A[i]; // говорим что следующий элемент равен текущему
+    Dec(i)  // уменьшаем i
+
+    end;
+   A[i+1]:=key;  // след=ключ
+   end
+ end;
+
+Procedure Print(Arr:Vector);
+var i:integer;
+begin
+   for i:=0 to n-1 do //вывели массив в строку и перенесли указатель на новую строку   что бы могли дальше писать
+   write (arr[i],' ');
+   writeln;
+   end;
+end.
