@@ -44,4 +44,41 @@ begin
    write (arr[i],' ');
    writeln;
    end;
+   Function BinarySearch(arr:Vector; key:char):integer;
+var right,left,middle:integer;
+begin
+left:=0;
+right:=n-1;
+while
+left<=right do
+begin
+middle:=left+(right-left) div 2;
+if key>Arr[middle] then
+right:=middle-1
+else
+if key<Arr[middle]
+then
+left:=middle+1
+else
+begin
+BinarySearch:=middle;
+exit
+end;
+end;
+ BinarySearch:=-1;
+end;
+begin
+readln(n);
+Create(A);
+Print(A);
+Sort(A);
+print(A);
+write('vvedite simvol dlya poiska: ');
+readln(t);
+if BinarySearch(A, t)=-1 then
+ writeln('ne naideno')
+ else
+writeln('index: ',BinarySearch(A, t));
+
+readln;                                      
 end.
